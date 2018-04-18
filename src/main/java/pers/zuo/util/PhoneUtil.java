@@ -4,10 +4,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import pers.zuo.consts.PhoneOperators;
 
 public class PhoneUtil {
+
+	private static final Pattern phonePattern = Pattern
+			.compile("^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\\d{8}$");;
+
+	public static String maskPhone(String phone) {
+		if (isValidPhone(phone)) {
+			return phone.substring(0, 3) + "****" + phone.substring(7);
+		}
+		return "";
+	}
+
+	public static boolean isValidPhone(String phone) {
+		if (StringUtils.isBlank(phone) || !phonePattern.matcher(phone).matches()) {
+			return false;
+		}
+		return true;
+	}
 
 	public static int getPhoneOperator(String phone) {
 		for (Map.Entry<Integer, List<String>> entry : OperatorPrefixMap.entrySet()) {
@@ -25,9 +43,8 @@ public class PhoneUtil {
 	static {
 		OperatorPrefixMap.put(PhoneOperators.CHINA_TELECOM,
 				Arrays.asList("133", "153", "177", "180", "181", "189", "1349", "1700"));
-		OperatorPrefixMap.put(PhoneOperators.CHINA_MOBILE,
-				Arrays.asList("134", "135", "136", "137", "138", "139", "150", "151", "152", "157", "158", "159", "182",
-						"183", "184", "187", "178", "188", "147", "1705"));
+		OperatorPrefixMap.put(PhoneOperators.CHINA_MOBILE, Arrays.asList("134", "135", "136", "137", "138", "139",
+				"150", "151", "152", "157", "158", "159", "182", "183", "184", "187", "178", "188", "147", "1705"));
 		OperatorPrefixMap.put(PhoneOperators.CHINA_UNICOM,
 				Arrays.asList("130", "131", "132", "145", "155", "156", "176", "185", "186", "1709"));
 	}
