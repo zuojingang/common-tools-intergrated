@@ -19,7 +19,7 @@ public class RandomUtil {
 	 * @param displacement
 	 * @return randomValue
 	 */
-	public static int _randomInt(int base, int displacement) {
+	private static int _randomInt(int base, int displacement) {
 		if(displacement <=0) {
 			return base;
 		}
@@ -39,6 +39,6 @@ public class RandomUtil {
 		if(from == to) {
 			return from;
 		}
-		return randomInt(from, to - from);
+		return _randomInt(from, to - from);
 	}
 }
