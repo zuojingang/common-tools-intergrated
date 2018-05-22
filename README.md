@@ -79,6 +79,7 @@ def somefunc(param1='', param2=0):
         print 'Greater'
     return (param2 - param1 + 1) or None
 class SomeClass:
+    
     pass
 >>> message = '''interpreter
 ... prompt'''
@@ -86,8 +87,8 @@ class SomeClass:
 
 ###脚注
 生成一个脚注[^footnote].
-  [^footnote]: 这里是 **脚注** 的 *内容*.
-  
+[^footnote]: 这里是 **脚注** 的 *内容*.
+
 ### 目录
 用 `[TOC]`来生成目录：
 
@@ -99,7 +100,7 @@ class SomeClass:
  - 行内公式，数学公式为：$\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$。
  - 块级公式：
 
-$$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+	$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
 更多LaTex语法请参考 [这儿][3].
 
