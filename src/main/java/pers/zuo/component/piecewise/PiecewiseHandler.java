@@ -26,7 +26,7 @@ public abstract class PiecewiseHandler<T> {
 	 * 
 	 * @return
 	 */
-	protected Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> initializeNThreadResult() {
+	public Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> initializeNThreadResult() {
 		return new HashMap<>();
 	}
 
@@ -35,12 +35,13 @@ public abstract class PiecewiseHandler<T> {
 	 * 
 	 * @return
 	 */
-	protected Map<PiecewiseKey<Integer>, PiecewiseResult<T>> initializeThreadResult() {
+	public Map<PiecewiseKey<Integer>, PiecewiseResult<T>> initializeThreadResult() {
 		return new HashMap<>();
 	}
 
-	protected void nThreads(final Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> nThreadResult, final int totalNum)
-			throws Exception {
+	public void nThreads(
+			final Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> nThreadResult,
+			final int totalNum) throws Exception {
 		nThreads(nThreadResult, totalNum, D_THREAD_SIZE, D_PART_SIZE);
 	}
 
@@ -49,8 +50,9 @@ public abstract class PiecewiseHandler<T> {
 	 * @param threadSize
 	 * @return nThreads process result.
 	 */
-	protected void nThreads(final Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> nThreadResult, final int totalNum,
-			final int threadSize, final int partSize) throws Exception {
+	public void nThreads(
+			final Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> nThreadResult,
+			final int totalNum, final int threadSize, final int partSize) throws Exception {
 
 		if (null == nThreadResult || 0 >= totalNum || 0 >= threadSize) {
 			return;
@@ -73,7 +75,8 @@ public abstract class PiecewiseHandler<T> {
 						@Override
 						public Boolean call() throws Exception {
 							final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult = initializeThreadResult();
-							nThreadResult.put(PiecewiseKey.with(thisFromIndex, thisToIndex), PiecewiseResult.with(threadResult));
+							nThreadResult.put(PiecewiseKey.with(thisFromIndex, thisToIndex),
+									PiecewiseResult.with(threadResult));
 							singleThread(threadResult, thisFromIndex, threadProcessNum, partSize);
 							return true;
 						}
@@ -101,11 +104,12 @@ public abstract class PiecewiseHandler<T> {
 		}
 	}
 
-	protected void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int totalNum) {
+	public void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int totalNum) {
 		singleThread(threadResult, 0, totalNum);
 	}
 
-	protected void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int offset, final int totalNum) {
+	public void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int offset,
+			final int totalNum) {
 		singleThread(threadResult, offset, totalNum, D_PART_SIZE);
 	}
 
@@ -113,10 +117,11 @@ public abstract class PiecewiseHandler<T> {
 	 * @param offset
 	 * @param toIndex
 	 * @param partSize
-	 * @return process subList values and include first index(offset) and
-	 *         exclude latest index(offset + totalNum)
+	 * @return process subList values and include first index(offset) and exclude
+	 *         latest index(offset + totalNum)
 	 */
-	protected void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int offset, final int totalNum, final int partSize) {
+	public void singleThread(final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult, final int offset,
+			final int totalNum, final int partSize) {
 		if (0 >= totalNum || 0 >= partSize) {
 			return;
 		}
