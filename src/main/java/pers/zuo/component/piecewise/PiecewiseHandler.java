@@ -21,6 +21,24 @@ import pers.zuo.component.piecewise.bean.PiecewiseTask;
  */
 public abstract class PiecewiseHandler<T> {
 
+	/**
+	 * this method aimed for simple when define the nThreadResult
+	 * 
+	 * @return
+	 */
+	protected Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> initializeNThreadResult() {
+		return new HashMap<>();
+	}
+
+	/**
+	 * this method aimed for simple when define the threadResult
+	 * 
+	 * @return
+	 */
+	protected Map<PiecewiseKey<Integer>, PiecewiseResult<T>> initializeThreadResult() {
+		return new HashMap<>();
+	}
+
 	protected void nThreads(final Map<PiecewiseKey<Integer>, PiecewiseResult<Map<PiecewiseKey<Integer>, PiecewiseResult<T>>>> nThreadResult, final int totalNum)
 			throws Exception {
 		nThreads(nThreadResult, totalNum, D_THREAD_SIZE, D_PART_SIZE);
@@ -54,7 +72,7 @@ public abstract class PiecewiseHandler<T> {
 
 						@Override
 						public Boolean call() throws Exception {
-							Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult = new HashMap<>();
+							final Map<PiecewiseKey<Integer>, PiecewiseResult<T>> threadResult = initializeThreadResult();
 							nThreadResult.put(PiecewiseKey.with(thisFromIndex, thisToIndex), PiecewiseResult.with(threadResult));
 							singleThread(threadResult, thisFromIndex, threadProcessNum, partSize);
 							return true;
