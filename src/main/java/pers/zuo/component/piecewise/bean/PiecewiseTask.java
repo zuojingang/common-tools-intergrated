@@ -5,9 +5,6 @@ import java.util.concurrent.FutureTask;
 
 /**
  * @author zuojingang
- *
- * @param <K
- *            extends Number> the type of part process return
  */
 public class PiecewiseTask extends FutureTask<Boolean> {
 
