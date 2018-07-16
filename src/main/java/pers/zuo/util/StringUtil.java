@@ -2,7 +2,7 @@ package pers.zuo.util;
 
 import java.util.List;
 
-public class StringUtils {
+public class StringUtil {
 
 	public static boolean isEmpty(String target) {
 		return null == target || target.isEmpty();
