@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CollectionUtils {
+public class CollectionUtil {
 
 	public static <E> boolean isEmpty(Collection<E> collection) {
 		return null == collection || collection.isEmpty();
@@ -19,7 +19,7 @@ public class CollectionUtils {
 
 	@SuppressWarnings("unchecked")
 	public static <P, E> List<P> fieldList(List<E> eList, String pName) {
-		if (isEmpty(eList) || StringUtils.isBlank(pName)) {
+		if (isEmpty(eList) || StringUtil.isBlank(pName)) {
 			return Collections.emptyList();
 		}
 		List<P> pList = new ArrayList<P>();

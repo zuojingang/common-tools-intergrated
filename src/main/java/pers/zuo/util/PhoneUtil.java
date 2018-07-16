@@ -21,7 +21,7 @@ public class PhoneUtil {
 	}
 
 	public static boolean isValidPhone(String phone) {
-		if (StringUtils.isBlank(phone) || !phonePattern.matcher(phone).matches()) {
+		if (StringUtil.isBlank(phone) || !phonePattern.matcher(phone).matches()) {
 			return false;
 		}
 		return true;

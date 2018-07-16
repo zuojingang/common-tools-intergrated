@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TupleUtils {
+public class TupleUtil {
 
 	private static String defaultSplit = "@";
 
@@ -63,10 +63,10 @@ public class TupleUtils {
 
 		switch (leftType) {
 		case classTypeInteger:
-			leftInt = StringUtils.isEmpty(leftStr) ? null : Integer.parseInt(leftStr);
+			leftInt = StringUtil.isEmpty(leftStr) ? null : Integer.parseInt(leftStr);
 			switch (rightType) {
 			case classTypeInteger:
-				rightInt = StringUtils.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
+				rightInt = StringUtil.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
 				if (null != leftInt && null != rightInt && leftInt <= rightInt) {
 					return new Range<Integer>(leftInt, rightInt);
 				}
@@ -74,7 +74,7 @@ public class TupleUtils {
 			case classTypeString:
 				return new Tuple<Integer, String>(leftInt, rightStr);
 			case classTypeDate:
-				rightDate = StringUtils.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
+				rightDate = StringUtil.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
 				return new Tuple<Integer, Date>(leftInt, rightDate);
 			default:
 				return Tuple.empty();
@@ -82,7 +82,7 @@ public class TupleUtils {
 		case classTypeString:
 			switch (rightType) {
 			case classTypeInteger:
-				rightInt = StringUtils.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
+				rightInt = StringUtil.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
 				return new Tuple<String, Integer>(leftStr, rightInt);
 			case classTypeString:
 				if (null != leftStr && null != rightStr && leftStr.compareTo(rightStr) <= 0) {
@@ -90,21 +90,21 @@ public class TupleUtils {
 				}
 				return new Tuple<String, String>(leftStr, rightStr);
 			case classTypeDate:
-				rightDate = StringUtils.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
+				rightDate = StringUtil.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
 				return new Tuple<String, Date>(leftStr, rightDate);
 			default:
 				return Tuple.empty();
 			}
 		case classTypeDate:
-			leftDate = StringUtils.isEmpty(leftStr) ? null : DateUtil.toDate(leftStr, dateFormat);
+			leftDate = StringUtil.isEmpty(leftStr) ? null : DateUtil.toDate(leftStr, dateFormat);
 			switch (rightType) {
 			case classTypeInteger:
-				rightInt = StringUtils.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
+				rightInt = StringUtil.isEmpty(rightStr) ? null : Integer.parseInt(rightStr);
 				return new Tuple<Date, Integer>(leftDate, rightInt);
 			case classTypeString:
 				return new Tuple<Date, String>(leftDate, rightStr);
 			case classTypeDate:
-				rightDate = StringUtils.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
+				rightDate = StringUtil.isEmpty(rightStr) ? null : DateUtil.toDate(rightStr, dateFormat);
 				if (null != leftDate && null != rightDate && leftDate.compareTo(rightDate) <= 0) {
 					return new Range<Date>(leftDate, rightDate);
 				}
