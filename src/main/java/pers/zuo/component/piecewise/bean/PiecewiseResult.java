@@ -1,16 +1,16 @@
 package pers.zuo.component.piecewise.bean;
 
-public class PiecewiseResult<T> {
+public class PiecewiseResult<V> {
 
-	private final T val;
+	private final V val;
 	private Exception exception;
 
-	public PiecewiseResult(T val) {
+	public PiecewiseResult(V val) {
 		super();
 		this.val = val;
 	}
 
-	public PiecewiseResult(T val, Exception exception) {
+	public PiecewiseResult(V val, Exception exception) {
 		super();
 		this.val = val;
 		this.exception = exception;
@@ -24,15 +24,7 @@ public class PiecewiseResult<T> {
 		this.exception = exception;
 	}
 
-	public T getVal() {
+	public V getVal() {
 		return val;
-	}
-
-	public static <T> PiecewiseResult<T> with(T val) {
-		return new PiecewiseResult<T>(val);
-	}
-
-	public static <T> PiecewiseResult<T> with(T val, Exception exception) {
-		return new PiecewiseResult<T>(val, exception);
 	}
 }

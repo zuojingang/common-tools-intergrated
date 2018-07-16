@@ -6,19 +6,19 @@ import java.util.concurrent.FutureTask;
 /**
  * @author zuojingang
  *
- * @param <T>
- *            the type of part process return
+ * @param <K
+ *            extends Number> the type of part process return
  */
-public class PiecewiseTask<T> extends FutureTask<Boolean> {
+public class PiecewiseTask extends FutureTask<Boolean> {
 
-	private final PiecewiseKey<Integer> taskKey;
+	private final PiecewiseKey taskKey;
 
-	public PiecewiseTask(Callable<Boolean> callable, PiecewiseKey<Integer> taskKey) {
+	public PiecewiseTask(Callable<Boolean> callable, PiecewiseKey taskKey) {
 		super(callable);
 		this.taskKey = taskKey;
 	}
 
-	public PiecewiseKey<Integer> getTaskKey() {
+	public PiecewiseKey getTaskKey() {
 		return taskKey;
 	}
 

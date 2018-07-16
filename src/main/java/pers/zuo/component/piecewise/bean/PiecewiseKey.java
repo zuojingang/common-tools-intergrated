@@ -1,21 +1,21 @@
 package pers.zuo.component.piecewise.bean;
 
-public class PiecewiseKey<T> {
+public class PiecewiseKey {
 
-	private final T from;
-	private final T to;
+	private final Integer from;
+	private final Integer to;
 
-	public PiecewiseKey(T from, T to) {
+	public PiecewiseKey(Integer from, Integer to) {
 		super();
 		this.from = from;
 		this.to = to;
 	}
 
-	public T getFrom() {
+	public Integer getFrom() {
 		return from;
 	}
 
-	public T getTo() {
+	public Integer getTo() {
 		return to;
 	}
 
@@ -36,8 +36,7 @@ public class PiecewiseKey<T> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		@SuppressWarnings("unchecked")
-		PiecewiseKey<T> other = (PiecewiseKey<T>) obj;
+		PiecewiseKey other = (PiecewiseKey) obj;
 		if (from == null) {
 			if (other.from != null)
 				return false;
@@ -49,9 +48,5 @@ public class PiecewiseKey<T> {
 		} else if (!to.equals(other.to))
 			return false;
 		return true;
-	}
-
-	public static <T> PiecewiseKey<T> with(T from, T to) {
-		return new PiecewiseKey<T>(from, to);
 	}
 }
