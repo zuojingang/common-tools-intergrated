@@ -16,13 +16,12 @@ import pers.zuo.component.piecewise.manager.PiecewiseBuilder;
 /**
  * @author zuojingang
  *
- * @param <T>
+ * @param <V>
  *            the type of part process return
  */
 public abstract class PiecewiseHandler<V> {
 
-	public void nThreads(
-			final Map<PiecewiseKey, PiecewiseResult<Map<PiecewiseKey, PiecewiseResult<V>>>> nThreadResult,
+	public void nThreads(final Map<PiecewiseKey, PiecewiseResult<Map<PiecewiseKey, PiecewiseResult<V>>>> nThreadResult,
 			final int totalNum) throws Exception {
 		nThreads(nThreadResult, totalNum, D_THREAD_SIZE, D_PART_SIZE);
 	}
@@ -32,8 +31,7 @@ public abstract class PiecewiseHandler<V> {
 	 * @param threadSize
 	 * @return nThreads process result.
 	 */
-	public void nThreads(
-			final Map<PiecewiseKey, PiecewiseResult<Map<PiecewiseKey, PiecewiseResult<V>>>> nThreadResult,
+	public void nThreads(final Map<PiecewiseKey, PiecewiseResult<Map<PiecewiseKey, PiecewiseResult<V>>>> nThreadResult,
 			final int totalNum, final int threadSize, final int partSize) throws Exception {
 
 		if (null == nThreadResult || 0 >= totalNum || 0 >= threadSize) {

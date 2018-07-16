@@ -13,7 +13,7 @@ public class PiecewiseBuilder {
 	public static PiecewiseKey buildKey(Integer from, Integer to) {
 		return new PiecewiseKey(from, to);
 	}
-	
+
 	public static <V> PiecewiseResult<V> buildResult(V val) {
 		return new PiecewiseResult<V>(val);
 	}
