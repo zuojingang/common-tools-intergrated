@@ -8,8 +8,8 @@
 	<description>intergrated of common tools</description>
 	
 	<properties>
-		<java_source_version>1.7</java_source_version>
-		<java_target_version>1.7</java_target_version>
+		<java_source_version>1.8</java_source_version>
+		<java_target_version>1.8</java_target_version>
 		<file_encoding>UTF-8</file_encoding>
 		
 		<maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
@@ -22,7 +22,9 @@
 			    <artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven_compiler_plugin_version}</version>
 				<configuration>
+					<!--java version-->
 					<source>${java_source_version}</source>
+					<!--jvm version-->
 					<target>${java_target_version}</target>
 					<encoding>${file_encoding}</encoding>
 				</configuration>
