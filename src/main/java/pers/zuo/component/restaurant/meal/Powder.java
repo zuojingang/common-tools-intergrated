@@ -1,4 +1,4 @@
-package pers.zuo.component.restaurant.Meal;
+package pers.zuo.component.restaurant.meal;
 
 /**
  * @author zuojingang
@@ -6,7 +6,7 @@ package pers.zuo.component.restaurant.Meal;
  * @Description: 炒河粉
  * @date 2019-09-11 17:07
  */
-public class Powder implements Meal {
+public class Powder implements IMeal {
 
     @Override
     public String getDescription() {

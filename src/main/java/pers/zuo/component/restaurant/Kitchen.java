@@ -1,10 +1,10 @@
 package pers.zuo.component.restaurant;
 
 import com.sun.istack.internal.NotNull;
-import pers.zuo.component.restaurant.Meal.Meal;
-import pers.zuo.component.restaurant.Meal.Noodles;
-import pers.zuo.component.restaurant.Meal.Powder;
-import pers.zuo.component.restaurant.condiment.CondimentDecorator;
+import pers.zuo.component.restaurant.meal.IMeal;
+import pers.zuo.component.restaurant.meal.Noodles;
+import pers.zuo.component.restaurant.meal.Powder;
+import pers.zuo.component.restaurant.condiment.AbstractCondimentDecorator;
 import pers.zuo.component.restaurant.condiment.Egg;
 import pers.zuo.component.restaurant.condiment.Meat;
 import pers.zuo.component.restaurant.condiment.Tomato;
@@ -19,23 +19,23 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class Kitchen {
 
-    public static Meal cooking(@NotNull Class<? extends Meal> meal, Class<? extends CondimentDecorator>... condiments){
+    public static IMeal cooking(@NotNull Class<? extends IMeal> meal, Class<? extends AbstractCondimentDecorator>... condiments){
 
-        Meal mealInstance = null;
+        IMeal IMealInstance = null;
         try {
-            mealInstance = meal.newInstance();
+            IMealInstance = meal.newInstance();
         } catch (InstantiationException |IllegalAccessException e) {
             e.printStackTrace();
             return null;
         }
-        for (Class<? extends CondimentDecorator> decorator: condiments){
+        for (Class<? extends AbstractCondimentDecorator> decorator: condiments){
             try {
-                mealInstance = decorator.getConstructor(Meal.class).newInstance(mealInstance);
+                IMealInstance = decorator.getConstructor(IMeal.class).newInstance(IMealInstance);
             } catch (InstantiationException | IllegalAccessException |InvocationTargetException |NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }
-        return mealInstance;
+        return IMealInstance;
     }
 
     public static void main(String[] args){
@@ -43,21 +43,21 @@ public class Kitchen {
         /**
          * 支个摊子
          */
-        Meal meal = cooking(Noodles.class, Meat.class);
+        IMeal IMeal = cooking(Noodles.class, Meat.class);
 
-        System.out.println(composeMenuItem(meal.getDescription(), meal.cost()));
+        System.out.println(composeMenuItem(IMeal.getDescription(), IMeal.cost()));
 
-        Meal meal1 = cooking(Noodles.class, Egg.class, Tomato.class);
+        IMeal IMeal1 = cooking(Noodles.class, Egg.class, Tomato.class);
 
-        System.out.println(composeMenuItem(meal1.getDescription(), meal1.cost()));
+        System.out.println(composeMenuItem(IMeal1.getDescription(), IMeal1.cost()));
 
-        Meal meal2 = cooking(Powder.class, Meat.class);
+        IMeal IMeal2 = cooking(Powder.class, Meat.class);
 
-        System.out.println(composeMenuItem(meal2.getDescription(), meal2.cost()));
+        System.out.println(composeMenuItem(IMeal2.getDescription(), IMeal2.cost()));
 
-        Meal meal3 = cooking(Powder.class, Egg.class, Tomato.class);
+        IMeal IMeal3 = cooking(Powder.class, Egg.class, Tomato.class);
 
-        System.out.println(composeMenuItem(meal3.getDescription(), meal3.cost()));
+        System.out.println(composeMenuItem(IMeal3.getDescription(), IMeal3.cost()));
     }
 
     public static String composeMenuItem(String description, double cost){
