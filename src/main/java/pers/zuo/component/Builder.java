@@ -13,15 +13,21 @@ import java.util.Objects;
 public class Builder<T> {
 
     private Class<T> clazz;
-
+    private Init<T> init;
     private ValidFields<T> validFields;
 
     private Builder(Class<T> clazz) {
         this.clazz = clazz;
     }
 
-    private Builder(Class<T> clazz, ValidFields<T> validFields) {
+    public Builder(Class<T> clazz, Init<T> init) {
         this.clazz = clazz;
+        this.init = init;
+    }
+
+    public Builder(Class<T> clazz, Init<T> init, ValidFields<T> validFields) {
+        this.clazz = clazz;
+        this.init = init;
         this.validFields = validFields;
     }
 
@@ -29,8 +35,12 @@ public class Builder<T> {
         return new Builder<>(clazz);
     }
 
-    public static <T> Builder<T> create(Class<T> clazz, ValidFields<T> validFields) {
-        return new Builder<>(clazz, validFields);
+    public static <T> Builder<T> create(Class<T> clazz, Init<T> init) {
+        return new Builder<>(clazz, init);
+    }
+
+    public static <T> Builder<T> create(Class<T> clazz, Init<T> init, ValidFields<T> validFields) {
+        return new Builder<>(clazz, init, validFields);
     }
 
     public Builder<T> addValid(ValidFields<T> valid){
@@ -43,6 +53,9 @@ public class Builder<T> {
         try {
 
             instance = this.clazz.newInstance();
+            if (Objects.nonNull(init)){
+                init.initialize(instance);
+            }
         } catch (InstantiationException | IllegalAccessException e) {
 
             throw new RuntimeException(e.getMessage());
@@ -59,6 +72,11 @@ public class Builder<T> {
             return instance;
         }
         throw new RuntimeException(String.format("instance fields valid error, Class is %s", instance.getClass().getName()));
+    }
+
+    public interface Init<T> {
+
+        void initialize(T instanse);
     }
 
     public interface FillField<T> {
