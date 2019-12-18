@@ -13,6 +13,14 @@ import java.util.*;
  */
 public class ListUtil {
 
+    public static<T> List<T> nullList(int size){
+        List<T> list = new ArrayList<>(size);
+        for(int i=0;i< size; i++){
+            list.add(null);
+        }
+        return list;
+    }
+
     public static <T> T first(List<T> list){
         return CollectionUtils.isEmpty(list)? null: list.get(0);
     }
