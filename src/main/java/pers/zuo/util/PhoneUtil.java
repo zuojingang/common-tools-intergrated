@@ -1,12 +1,12 @@
 package pers.zuo.util;
 
+import pers.zuo.consts.PhoneOperators;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import pers.zuo.consts.PhoneOperators;
 
 public class PhoneUtil {
 

@@ -1,5 +1,10 @@
 package pers.zuo.component.piecewise;
 
+import pers.zuo.component.piecewise.bean.PiecewiseKey;
+import pers.zuo.component.piecewise.bean.PiecewiseResult;
+import pers.zuo.component.piecewise.bean.PiecewiseTask;
+import pers.zuo.component.piecewise.manager.PiecewiseBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -7,11 +12,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import pers.zuo.component.piecewise.bean.PiecewiseKey;
-import pers.zuo.component.piecewise.bean.PiecewiseResult;
-import pers.zuo.component.piecewise.bean.PiecewiseTask;
-import pers.zuo.component.piecewise.manager.PiecewiseBuilder;
 
 /**
  * @author zuojingang
