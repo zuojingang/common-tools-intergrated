@@ -1,6 +1,6 @@
 package pers.zuo.component.template.chain;
 
-import com.itiaoling.hiccup.order.base.compont.template.chain.node.ChainNode;
+import pers.zuo.component.template.chain.node.ChainNode;
 
 /**
  * @author zuojingang

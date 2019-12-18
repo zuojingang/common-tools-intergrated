@@ -1,6 +1,5 @@
 package pers.zuo.component.restaurant;
 
-import com.sun.istack.internal.NotNull;
 import pers.zuo.component.restaurant.meal.IMeal;
 import pers.zuo.component.restaurant.meal.Noodles;
 import pers.zuo.component.restaurant.meal.Powder;
@@ -9,6 +8,7 @@ import pers.zuo.component.restaurant.condiment.Egg;
 import pers.zuo.component.restaurant.condiment.Meat;
 import pers.zuo.component.restaurant.condiment.Tomato;
 
+import javax.validation.constraints.NotNull;
 import java.lang.reflect.InvocationTargetException;
 
 /**

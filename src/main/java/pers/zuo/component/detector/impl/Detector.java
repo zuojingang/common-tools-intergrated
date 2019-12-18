@@ -1,10 +1,10 @@
 package pers.zuo.component.detector.impl;
 
-import com.sun.istack.internal.NotNull;
 import pers.zuo.component.detector.IDetector;
 import pers.zuo.component.detector.probe.IProbe;
 import pers.zuo.component.detector.snapshot.DetectorSnapshot;
 
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 

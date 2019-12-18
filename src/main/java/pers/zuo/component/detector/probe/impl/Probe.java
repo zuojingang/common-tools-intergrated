@@ -1,11 +1,11 @@
 package pers.zuo.component.detector.probe.impl;
 
-import com.sun.istack.internal.NotNull;
 import pers.zuo.component.detector.IDetector;
 import pers.zuo.component.detector.probe.IProbe;
 import pers.zuo.component.detector.probe.judge.IJudge;
 import pers.zuo.component.detector.probe.snapshot.ProbeSnapshot;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**

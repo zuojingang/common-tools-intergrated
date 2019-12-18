@@ -1,8 +1,8 @@
 package pers.zuo.component.detector;
 
-import com.sun.istack.internal.NotNull;
 import pers.zuo.component.detector.probe.IProbe;
 
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 /**
