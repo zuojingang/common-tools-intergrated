@@ -127,6 +127,7 @@ public class ReflectUtils {
         }
         Field[] fieldArray = clazz.getDeclaredFields();
         if (0 == fieldArray.length){
+            getAllFieldsName(clazz.getSuperclass(), fieldsName);
             return;
         }
         for (Field field : fieldArray) {
