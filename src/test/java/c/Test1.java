@@ -1,78 +1,60 @@
 package c;
 
+import java.util.regex.Pattern;
+
+import static com.alibaba.fastjson.JSON.parseObject;
+import static com.alibaba.fastjson.JSON.toJSONString;
+import static java.util.regex.Pattern.compile;
+
 public class Test1 {
 
-	public static void main(String[] args) throws InterruptedException {
-		System.out.println("main method start!");
-		//
-		// Integer a = 1;
-		// Integer b = 2;
-		// Integer c = 3;
-		// Integer d = 3;
-		// Integer e = 321;
-		// Integer f = 321;
-		// Long g = 3L;
-		// int s = 3;
-		// Integer y = 300;
-		// Integer k = 21;
-		// Long t = 321L;
-		// long h = 321L;
-		//
-		// System.out.println(c == d);
-		// System.out.println(e == f);
-		// System.out.println(c == (a + b));
-		// System.out.println(c.equals((a + b)));
-		// System.out.println(g == (a + b));
-		// System.out.println(g.equals(a + b));
-		// System.out.println("^^^^^^^^^^^");
-		// System.out.println(s == c);
-		// System.out.println(s == (a + b));
-		// System.out.println(h == e);
-		// System.out.println(t == (y + k));
-		// System.out.println(h == (y + k));
+	public static void main(String[] args) {
 
-		Thread[] threads = new Thread[10];
-		for (int i = 0; i < 10; i++) {
-			final int i1 = i;
-			Thread thread = new Thread(() -> {
+		Pattern pattern = compile("^\\d+(\\.\\d)?$");
 
-				for (int j = 0; j < 10000; j++) {
+		System.out.println(pattern.matcher("3.256").matches());
+		System.out.println(pattern.matcher("3.2").matches());
+		System.out.println(pattern.matcher("3").matches());
+		System.out.println(pattern.matcher("0.3").matches());
+		System.out.println(pattern.matcher("0.32").matches());
+		System.out.println(pattern.matcher("e").matches());
 
-					testM(i1, (i1 + 5) % 4);
-				}
 
-				// while (true) {
-				// testM(i1, (i1 + 5) % 4);
-				// }
-			}, new StringBuilder("T->").append(i).append(i).append(i).toString());
+		IA ia = new IA();
+		ia.setId("dfs");
+		A a = new A();
+		a.setId("fff");
+		a.setNumber(4);
+		IA iaa = a;
 
-			thread.start();
-			threads[i] = thread;
-		}
-		// for (int i = 0; i < threads.length; i++) {
-		//
-		// Thread thread = threads[i];
-		// thread.join();
-		// }
-		StringBuilder sBuilder = new StringBuilder();
-		while (1 < Thread.activeCount()) {
+		A aaai = parseObject(toJSONString(ia), A.class);
+		A aai = parseObject(toJSONString(iaa), A.class);
 
-			sBuilder.append(Thread.activeCount());
-			if (Thread.activeCount() - 1 == threads.length) {
-				Thread.sleep(650);
-			} else {
-				Thread.sleep(5);
-			}
-		}
-		System.out.println(sBuilder.append("main method is ended!!!"));
+		System.out.println(11);
 	}
 
-	private static boolean testM(int a, int b) {
-		// System.out.println("enter the method testM!");
-		int ret = a + b;
-		// System.out.println("end the method testM");
-		System.out.println(new StringBuilder(Thread.currentThread().getName()).append("execute:"));
-		return ret % 3 == 0;
+	public static class IA{
+		private String id;
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
+	}
+
+	public static class A extends IA{
+		private Integer number;
+
+		public Integer getNumber() {
+			return number;
+		}
+
+		public void setNumber(Integer number) {
+			this.number = number;
+		}
 	}
 
 }
