@@ -18,6 +18,7 @@
 		<commons-beanutils-version>1.9.3</commons-beanutils-version>
 		<javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
 		<spring.web.version>3.2.2.RELEASE</spring.web.version>
+		<fastjson.version>1.2.62</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -55,6 +56,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.web</artifactId>
 			<version>${spring.web.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
 		</dependency>
 
 	</dependencies>
