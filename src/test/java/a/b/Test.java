@@ -1,5 +1,7 @@
 package a.b;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Objects;
 
 /**
@@ -17,6 +19,10 @@ public class Test {
         boolean equals = Objects.equals(sd, dddd);
 
         System.out.println(equals);
+
+        Object parse = JSON.parse("123");
+
+        System.out.println(parse);
     }
 
 }

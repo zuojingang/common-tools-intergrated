@@ -1,16 +1,16 @@
 package pers.zuo.design.pattern.piecewise.manager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-
 import pers.zuo.design.pattern.piecewise.bean.PiecewiseKey;
 import pers.zuo.design.pattern.piecewise.bean.PiecewiseResult;
 import pers.zuo.design.pattern.piecewise.bean.PiecewiseTask;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Callable;
+
 public class PiecewiseBuilder {
 
-	public static PiecewiseKey buildKey(Integer from, Integer to) {
+	public static PiecewiseKey buildKey(long from, long to) {
 		return new PiecewiseKey(from, to);
 	}
 
@@ -28,7 +28,7 @@ public class PiecewiseBuilder {
 
 	/**
 	 * this method aimed for simple when define the nThreadResult
-	 * 
+	 *
 	 * @return
 	 */
 	public static <V> Map<PiecewiseKey, PiecewiseResult<Map<PiecewiseKey, PiecewiseResult<V>>>> initializeNThreadResult() {
@@ -37,7 +37,7 @@ public class PiecewiseBuilder {
 
 	/**
 	 * this method aimed for simple when define the threadResult
-	 * 
+	 *
 	 * @return
 	 */
 	public static <V> Map<PiecewiseKey, PiecewiseResult<V>> initializeThreadResult() {

@@ -8,15 +8,15 @@ import java.util.concurrent.FutureTask;
  */
 public class PiecewiseTask extends FutureTask<Boolean> {
 
-	private final PiecewiseKey taskKey;
+    private final PiecewiseKey taskKey;
 
-	public PiecewiseTask(Callable<Boolean> callable, PiecewiseKey taskKey) {
-		super(callable);
-		this.taskKey = taskKey;
-	}
+    public PiecewiseTask(Callable<Boolean> callable, PiecewiseKey taskKey) {
+        super(callable);
+        this.taskKey = taskKey;
+    }
 
-	public PiecewiseKey getTaskKey() {
-		return taskKey;
-	}
+    public PiecewiseKey getTaskKey() {
+        return taskKey;
+    }
 
 }
