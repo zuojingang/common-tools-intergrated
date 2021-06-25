@@ -2,8 +2,26 @@
 <html>
 <head>
 	<title>welcome</title>
+	<script type="text/javascript">
+		function GetLocalIPAddr() {
+		    var oSetting = null;
+		    var ip = null;
+		    try {
+		        oSetting = new ActiveXObject("rcbdyctl.Setting");
+		        ip = oSetting.GetIPAddress;
+		        if (ip.length == 0) {
+		            return "没有连接到Internet";
+		        }
+		        oSetting = null;
+		    } catch (e) {
+		        return ip;
+		    }
+		    return ip;
+		}
+		document.write(GetLocalIPAddr() + "<br/>")	
+	</script>
 </head>
 <body>
-	<h1>Welcome</h1>
+	<h1>Welcome </h1>
 </body>
 </html>

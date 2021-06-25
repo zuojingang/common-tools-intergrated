@@ -52,7 +52,6 @@ public class TransformUtil {
         Target target = null;
         try {
             target = targetClass.newInstance();
-            BeanUtils.copyProperties(original, target);
             copyProperties(target, original);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
