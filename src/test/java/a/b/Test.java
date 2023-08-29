@@ -1,7 +1,12 @@
 package a.b;
 
+
 import com.alibaba.fastjson.JSON;
 
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -14,15 +19,27 @@ public class Test {
 
     public static void main(String[] args) {
 
-        final int sd= 1;
-        Integer dddd= 1;
-        boolean equals = Objects.equals(sd, dddd);
+//        MethodTest methodTest= param -> {
+//            System.out.println(param);
+//            return Objects.isNull(param) || param>100;
+//        };
+//        String s = JSON.toJSONString(methodTest);
+//        MethodTest parseObject = JSON.parseObject(s, MethodTest.class);
+//        boolean b = parseObject.testMethod(1);
+//        System.out.println(b);
 
-        System.out.println(equals);
-
-        Object parse = JSON.parse("123");
-
-        System.out.println(parse);
+        LocalDateTime now = LocalDateTime.now();
+        String s1 = JSON.toJSONString(now);
+        System.out.println(s1);
+        LocalDateTime localDateTime = JSON.parseObject(s1, LocalDateTime.class);
+        System.out.println(localDateTime);
+//        Method method = new Method();
     }
+
+    interface MethodTest{
+
+        boolean testMethod(Integer param);
+    }
+
 
 }

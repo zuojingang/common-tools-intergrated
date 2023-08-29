@@ -1,0 +1,72 @@
+{
+  "devices": [
+    "dyeing-xinhai-gateway-prod001"
+  ],
+  "transferData": {
+    "msgType": "order",
+    "msgId": "3d2ed6fd-4e2b-4991-8a6f-3473fa8bbd7d",
+    "businessId": "1543871203293237250",
+    "timestamp": "1657015022137",
+    "ack": true,
+    "data": {
+      "workOrder": {
+        "workOrderId": "1543871203293237250",
+        "source": 0,
+        "deviceId": "1381892764224827324",
+        "theSampleColor": "#44474b",
+        "weightNum": 2592.70,
+        "craftSumTime": 436,
+        "lengthNum": 2592.70,
+        "orderId": "1543871199811964929",
+        "orgCode": "3983D94F788342E1B0D8F52EA890D8E8",
+        "icCard": "20220607536"
+      },
+      "machineConfig": {
+        "workOrderId": "1543871203293237250",
+        "machineConfigId": "1543871210171895809",
+        "deviceId": "1381892764224827324",
+        "bathRatio": "0",
+        "bibulousRate": 200.0000,
+        "mainPumpSpeed": 80.0000,
+        "tibSpeed": 380.00,
+        "theFanSpeedControl": 95.00,
+        "forTime": 0.00,
+        "theNozzlePosition": 0.00,
+        "feedWaterVolume": 0.00,
+        "fanOn": "0",
+        "minAmoutOfWater": 0.00,
+        "washingTimes": 1.50,
+        "weightNum": 2592.70
+      },
+      "workOrderCraft": [
+        {
+          "orgCode": "3983D94F788342E1B0D8F52EA890D8E8",
+          "workOrderId": "1543871203293237250",
+          "workOrderCraftId": "1543871210201255938",
+          "craftId": "1541689283574304770",
+          "sort": 0,
+          "craftVersion": 2
+        }
+      ],
+      "order": {
+        "orderId": "1543871199811964929",
+        "clientCode": "",
+        "clientName": "吴江都华*订",
+        "numAndColor": "乌木色",
+        "batchNo": "220600092",
+        "calicoName": "100D涤纶四面弹",
+        "finishedCode": "",
+        "finishedName": "",
+        "clientColorCard": "",
+        "whetherTheFirst": 0,
+        "andCylinder1": "",
+        "andCylinder2": "",
+        "andCylinder3": "",
+        "remark": ""
+      }
+    },
+    "needRetry": true
+  },
+  "eventType": "work",
+  "utcTime": false
+}

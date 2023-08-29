@@ -1,6 +1,7 @@
 package pers.zuo.design.pattern.template;
 
 import org.springframework.context.ApplicationContext;
+import pers.zuo.design.pattern.template.chain.IChain;
 import pers.zuo.design.pattern.template.chain.PositionChain;
 
 /**
@@ -20,9 +21,17 @@ public interface ITemplate<P, O> {
     ITemplate<P, O> withApplicationContext(ApplicationContext applicationContext);
 
     /**
+     * 设置责任链
+     *
+     * @param chain
+     * @return
+     */
+    ITemplate<P, O> withChain(IChain<P> chain);
+
+    /**
      * 初始化责任链
      */
-    PositionChain<P> initChain();
+    ITemplate<P, O> initChain();
 
     /**
      * 模版整合责任链的具体实现

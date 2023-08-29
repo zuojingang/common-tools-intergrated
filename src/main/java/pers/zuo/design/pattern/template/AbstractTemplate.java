@@ -3,6 +3,7 @@ package pers.zuo.design.pattern.template;
 import org.springframework.context.ApplicationContext;
 import pers.zuo.design.pattern.template.chain.IChain;
 import pers.zuo.design.pattern.template.chain.PositionChain;
+import pers.zuo.design.pattern.template.chain.SimpleChain;
 import pers.zuo.design.pattern.template.constants.enums.Position;
 
 import java.util.Objects;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public abstract class AbstractTemplate<P, O> implements ITemplate<P, O> {
 
     protected ApplicationContext applicationContext;
+    private IChain<P> chain;
 
     @Override
     public ITemplate<P, O> withApplicationContext(ApplicationContext applicationContext) {
@@ -24,18 +26,17 @@ public abstract class AbstractTemplate<P, O> implements ITemplate<P, O> {
     }
 
     @Override
+    public ITemplate<P, O> withChain(IChain<P> chain) {
+        this.chain = chain;
+        return this;
+    }
+
+    @Override
     public O process(P params) {
-        PositionChain<P> chain = initChain();
-        /*
-            如果责任链为空，直接返回
-         */
-        if (Objects.isNull(chain)) {
-            return null;
-        }
         /*
             如果前置责任链不为空，执行前置责任链
          */
-        IChain<P> beforeChain = chain.subChain(Position.BEFORE);
+        IChain<P> beforeChain = beforeChain(chain);
         if (Objects.nonNull(beforeChain)) {
             beforeChain.exec(params);
         }
@@ -46,11 +47,46 @@ public abstract class AbstractTemplate<P, O> implements ITemplate<P, O> {
         /*
             如果后置责任链不为空，则执行后置责任链
          */
-        IChain<P> afterChain = chain.subChain(Position.AFTER);
+        IChain<P> afterChain = afterChain(chain);
         if (Objects.nonNull(afterChain)) {
             afterChain.exec(params);
         }
         return result;
+    }
+
+    /**
+     * 前置责任链
+     *
+     * @param chain
+     * @return
+     */
+    private IChain<P> beforeChain(IChain<P> chain) {
+        // 如果责任链为空，直接返回
+        if (Objects.isNull(chain)) {
+            return null;
+        }
+        // 默认简单责任链为前置责任链，对应节点的默认位置
+        if (chain instanceof SimpleChain) {
+            return chain;
+        }
+        return chain.subChain(Position.BEFORE);
+    }
+
+    /**
+     * 后置责任链
+     *
+     * @param chain
+     * @return
+     */
+    private IChain<P> afterChain(IChain<P> chain) {
+        // 如果责任链为空，直接返回
+        if (Objects.isNull(chain)) {
+            return null;
+        }
+        if (chain instanceof SimpleChain) {
+            return null;
+        }
+        return chain.subChain(Position.AFTER);
     }
 
 }

@@ -1,0 +1,20 @@
+{
+  "devices": [
+    "dyeing-xinhai-gateway-prod001"
+  ],
+  "transferData": {
+    "msgType": "issue",
+    "msgId": "eba239e9-8d74-44ef-80ee-dccc62914bc4",
+    "businessId": "1543871203293237250",
+    "timestamp": "1657015022173",
+    "ack": true,
+    "data": {
+      "workOrderId": "1543871203293237250",
+      "issueTime": "1657015022",
+      "run": 1
+    },
+    "needRetry": true
+  },
+  "eventType": "work",
+  "utcTime": false
+}
